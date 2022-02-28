@@ -1,0 +1,501 @@
+page-each-room {
+
+    //Sliding Animation settings
+    @-webkit-keyframes slidingAnimation {
+        0% {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+        }
+      
+        50% {
+          transform: translate3d(-50px,0,0);
+          -webkit-transform: translate3d(-50px,0,0);
+        }
+      
+        100% {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+        }
+      }     
+      
+      .startAnimation {
+          -webkit-animation: slidingAnimation;
+          animation: slidingAnimation;
+          -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
+      }
+    //End of sliding animation
+
+    //Sliding Animation settings
+    @-webkit-keyframes clientSlidingAnimation {
+        0% {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+        }
+      
+        50% {
+          transform: translate3d(-90px,0,0);
+          -webkit-transform: translate3d(-90px,0,0);
+        }
+      
+        100% {
+          transform: translate3d(0,0,0);
+          -webkit-transform: translate3d(0,0,0);
+        }
+      }     
+      
+      .clientAnimation {
+          -webkit-animation: clientSlidingAnimation;
+          animation: clientSlidingAnimation;
+          -webkit-animation-duration: 800ms;
+          animation-duration: 800ms;
+      }
+    //End of sliding animation
+
+    //
+    // TIP ANIMATION
+    //
+    .arrow {
+        background: transparent !important;
+        background-color: transparent !important;        
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-right: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-left: 20px !important;
+        }
+    }
+
+    .btns {
+        position: relative !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+        z-index: 100 !important;
+        @include ltr() { //Format for ltr platform direction
+            float: left !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: right !important;
+        }  
+    }
+
+    .tipInitial{
+        opacity: 0 !important;
+        //margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;     
+        color: color($colors, darkGrey) !important;   
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 75% !important;
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-left: 20px !important;
+            margin-right: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-right: 20px !important;
+            margin-left: 20px !important;
+        }  
+        text-align: justify !important;
+        text-justify: inter-word !important;     
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+        font-style: italic !important;
+        margin-bottom: 8px !important;  
+    }
+
+    .tipVisible{
+        opacity: 1 !important;
+        //margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;
+        color: color($colors, darkGrey) !important; 
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 75% !important;
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-left: 20px !important;
+            margin-right: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-right: 20px !important;
+            margin-left: 20px !important;
+        }   
+        text-align: justify !important;
+        text-justify: inter-word !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;  
+        font-style: italic !important;
+        margin-bottom: 8px !important;
+    }
+
+    .TipIn {
+        -webkit-animation: fadeInAnim;
+        animation: fadeInAnim;
+        -webkit-animation-duration: 800ms;
+        animation-duration: 800ms;  
+    }
+
+    @-webkit-keyframes fadeInAnim {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }    
+
+    .TipOut {
+        -webkit-animation: fadeOutAnim;
+        animation: fadeOutAnim;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;  
+    }
+
+    @-webkit-keyframes fadeOutAnim {
+        from { opacity: 1; }
+        to   { opacity: 0; }
+    }
+    // END OF FEATURE TIP ANIMATIONS
+    //
+
+   .sent{
+        font-size: 70% !important;
+        color: color($colors, secondary) !important;
+        @include ltr() { //Format for ltr platform direction
+            text-align: right !important;
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            text-align: left !important;
+        }
+        
+    }
+
+    .failed {
+        font-size: 70% !important;
+        color: color($colors, danger) !important;
+        @include ltr() { //Format for ltr platform direction
+            text-align: right !important;
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            text-align: left !important;
+        }        
+    }
+    
+    #msgID {
+        .item-inner {
+            margin: 0px !important;
+        }
+        
+
+        .msgLabel {
+            margin: 0 0 6px 0 !important;        
+        }
+    
+        
+        .displayMsg {
+            margin: 0px !important;
+            color: color($colors, danger) !important;
+           // display: table !important; //Added this so the child <span> elements can be vertically aligned by using display: table-cell and vertical-align: middle
+            white-space: pre-line !important; //Enables \n to be rendered as a newline inside the ion-label
+            width: 100% !important;
+        }
+
+        pre {
+            font-size: 90% !important;
+            font-family: inherit !important;
+            padding-bottom: 4px !important;
+        }
+    
+        .msgIcon {
+          //  display:table-cell !important;
+          //  vertical-align:  top !important;
+            @include ltr() { //Format for ltr platform direction
+                padding-right: 4px !important; 
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                padding-left: 4px !important; 
+            }
+        }
+    
+        .dateTime {
+            font-size: 60% !important;        
+            color: color($colors, danger) !important;
+            //display:table-cell !important;
+            //vertical-align: bottom !important; 
+            @include ltr() { //Format for ltr platform direction
+                text-align: left !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                text-align: right !important; 
+            }
+        }
+
+    }
+
+    
+
+    #mainList {
+
+        padding-right: 15px !important;
+        padding-left: 15px !important;
+
+        h3 {
+            margin-top: 0px !important;
+            @include ltr() { //Format for ltr platform direction
+                margin-left: 10px !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                margin-right: 10px !important;
+            }            
+        }
+        h2 {
+            color: #1e1e1e;
+            font-weight: normal !important; 
+        }
+
+        ion-item {
+            padding-left: 0px !important;
+            border-radius: 10px !important; 
+            border-top: 1px solid #dedede !important;
+            border-bottom: 1px solid #dedede !important;
+            border-left: 1px solid #dedede !important;    
+            border-right: 1px solid #dedede !important;
+        }
+    
+        ion-item-sliding {        
+            border-radius: 10px !important;            
+            //margin-bottom: 5px !important;
+        }
+
+        .list {
+            //padding-left: 15px !important;
+            //padding-right: 30px !important;  
+            margin: 0px 0px 0px !important; 
+                
+        }   
+
+        .emptyMsg {
+            //margin-top: 25px !important;
+            //margin-bottom: 25px !important;
+            //border: none !important;
+            background-color: #f1f2f6 !important;
+        }
+        
+        .row {
+            padding-bottom: 7px !important;
+        }    
+
+        .endText {
+            @include ltr() { //Format for ltr platform direction
+                text-align: right !important;
+                float: right !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                text-align: left !important;
+                float: left !important;
+            }    
+            text-transform: lowercase !important;
+            margin-top: 2px !important;       
+            margin-bottom: 1px !important;
+            font-size: 75% !important;  
+            font-weight: normal !important;   
+        }
+
+        .strikethrough {
+            @include ltr() { //Format for ltr platform direction
+                text-align: right !important;
+                float: right !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                text-align: left !important;
+                float: left !important;
+            } 
+            position: relative;
+            text-transform: lowercase !important;        
+            margin-bottom: 1px !important;
+            margin-top: 2px !important;
+            font-size: 75% !important;  
+            font-weight: normal !important;  
+            color: #d3d3d3;
+        }
+
+        .strikethrough:before {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 50%;
+            right: 0;
+            border-top: 1px solid;
+            border-color: inherit;
+          
+            -webkit-transform:rotate(-5deg);
+            -moz-transform:rotate(-5deg);
+            -ms-transform:rotate(-5deg);
+            -o-transform:rotate(-5deg);
+            transform:rotate(-5deg);
+        }
+
+        .item-wrapper {
+            height: 50px !important; //This should match the height under #accept-col so the accept buttons are aligned correctly
+        //    padding-left: 15px !important;
+        //    padding-right: 15px !important;
+        }
+    }
+    
+    #waitItem {
+        @include ltr() { //Format for ltr platform direction
+            padding-left: 15px !important;
+            padding-right: 5px !important;
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            padding-right: 15px !important;
+            padding-left: 5px !important;
+        }         
+        padding-bottom: 0px !important;
+        margin-bottom: 0px;  
+        font-size: 95% !important;  
+        font-weight: normal !important;
+        min-height: 3rem !important;
+
+        .item-inner {
+            border: none !important;
+        }
+
+        .timeText {
+            @include ltr() { //Format for ltr platform direction
+                text-align: right !important;
+                float: right !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                text-align: left !important;
+                float: left !important;
+            }   
+        }
+
+        .label {
+            margin-top: 0px !important;
+            margin-bottom: 0px !important;
+        }
+    }
+    
+    #accept-col {
+        padding-left: 0px !important;
+        height: 50px !important; //This should match the height under #mainList so the accept buttons are aligned correctly
+
+        .label{
+            margin: 0 0 0 0 !important;
+        }
+
+        .item-inner{
+            border-radius: 0px !important; 
+            border-top: 0px solid #dedede !important;
+            border-bottom: 0px solid #dedede !important;
+            border-left: 0px solid #dedede !important;    
+            border-right: 0px solid #dedede !important;
+            padding-right: 0px;
+            padding-bottom: 5px !important;
+            font-size: 150% !important;
+        }
+
+        .icon {
+            //padding-left: 5px !important;
+            padding-top: 7px !important;
+        }  
+        
+        .acceptDiv {
+            margin-top: 3px !important;
+        }
+    } 
+
+    //Formatting of the textarea placeholder text
+    textarea::placeholder {
+        color: color($colors, primary) !important;
+        font-style: italic;
+        font-weight: lighter !important;
+    }
+    
+    #msgArea {
+        //width: calc(100% - 10px);
+        width: calc(100%) !important;
+        border: solid 1px color($colors, primary) !important;
+        border-radius: 5px !important;
+        color: color($colors, primary) !important;
+        background: transparent;
+        background-color: transparent !important;
+        position: initial !important; //Added here to solve the issue where on-screen keyboard coverd focused textarea element
+        font-size: 95% !important; 
+
+        .text-input {
+            border: solid 1px color($colors, primary) !important;
+            margin: 0px !important;
+        }
+    }
+
+    .msgItem {
+        //position: initial !important; //Added here to solve the issue where on-screen keyboard coverd focused textarea element
+        margin-top: 10px !important;
+    }
+
+    .clearBtnPadding {
+        @include ltr() { //Format for ltr platform direction
+            padding-right: 2px !important; 
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            padding-left: 2px !important; 
+        } 
+        
+    }
+
+    .sendBtnPadding {
+        @include ltr() { //Format for ltr platform direction
+            padding-left: 2px !important;  
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            padding-right: 2px !important; 
+        }   
+    }
+
+    .sendBtn {
+        border-radius: 5px !important;
+    }
+    .clearBtn {               
+        border-radius: 5px !important;
+    }
+    
+}
+
+/*.platform-ios {
+    page-each-room {
+        #accept-col {
+            padding-left: 0px !important;
+            height: 44px !important;            
+        }
+    }
+}
+
+.platform-android {
+    page-each-room {
+        #accept-col {
+            padding-left: 0px !important;
+            height: 44px !important; 
+        }
+    }
+}
+*/

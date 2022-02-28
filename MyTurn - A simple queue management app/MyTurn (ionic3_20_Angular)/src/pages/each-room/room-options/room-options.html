@@ -1,0 +1,34 @@
+<ion-item>
+    <ion-label (tap)="onAction('delete')">
+        <ion-icon class="popoverIcon" name="trash" (tap)="onAction('delete')"></ion-icon>
+        {{'Delete Room' | translate}}
+    </ion-label>
+</ion-item>
+
+<ion-item>
+    <ion-label (tap)="onAction('edit')">
+        <ion-icon class="popoverIcon" name="create" (tap)="onAction('edit')"></ion-icon>
+        {{'Edit Room' | translate}}
+    </ion-label>
+</ion-item>
+
+<ion-item>
+        <ion-label (tap)="onAction('add')">
+            <ion-icon class="popoverIcon" name="add" (tap)="onAction('add')"></ion-icon>
+            {{'Add Contact' | translate}}
+        </ion-label>
+    </ion-item>
+
+<ion-item>
+    <ion-toggle [ngModel]="showWaitTime" (ngModelChange)="onAction('showWaitTime')"></ion-toggle>
+    <ion-label>
+        {{'Show wait time' | translate}}
+    </ion-label>
+</ion-item>
+
+<ion-item>
+    <ion-toggle [ngModel]="autoMeasureTime" (ngModelChange)="onAction('autoMeasure')"></ion-toggle>
+    <ion-label>
+        {{'Auto-measure time' | translate}}
+    </ion-label>
+</ion-item>

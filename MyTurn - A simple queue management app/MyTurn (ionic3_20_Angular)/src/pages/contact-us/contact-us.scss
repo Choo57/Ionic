@@ -1,0 +1,108 @@
+page-contact-us {
+
+    .errorItem {
+        height: 14px !important;
+        @include ltr() { //Format for ltr platform direction
+            padding-left: 16px !important;
+            text-align: left !important;
+            float: left !important;
+            direction: ltr !important;
+        }
+        @include rtl() { //Format for ltr platform direction
+            padding-right: 16px !important;
+            text-align: right !important;
+            float: right !important;
+            direction: rtl !important;
+        } 
+    }
+
+    .error {
+        color: rgb(223, 62, 62);
+        font-size: 11px;
+    }
+    
+    .error1 {
+        color: rgb(75, 75, 75);
+        border-bottom: 1px solid #ff0000;
+    }
+
+    .greeting {
+        margin-top: 5px !important;
+        margin-bottom: 0px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        font-size: 110% !important;
+    }
+
+    .formInput {
+        @include ltr() { //Format for ltr platform direction
+            text-align: left !important;
+            float: left !important;
+            direction: ltr !important;
+        }
+        @include rtl() { //Format for ltr platform direction
+            text-align: right !important;
+            float: right !important;
+            direction: rtl !important;
+        } 
+    }
+
+    #msgArea {
+        //width: calc(100% - 10px);
+        //width: calc(100%) !important;
+        //border: solid 1px #dedede !important;
+        //border-radius: 5px !important;
+        //color: white !important;
+        //background: transparent;
+        //background-color: color($colors, primary) !important;
+        font-size: 95% !important; 
+
+        .text-input {
+            //border: solid 1px #dedede !important;
+            margin: 2px !important;
+            border-bottom: solid 1px #dedede !important;
+        }
+    }
+
+    .item {
+        border-bottom: 0px !important;
+        box-shadow: none !important; //Removes the line that extends to the right when the textarea has the focus
+        border-bottom-color: transparent !important;
+    }
+
+    .input {
+        box-shadow: none !important; //Removes the line that extends to the right when the textarea has the focus
+        border-bottom-color: transparent !important; //Removes the blue border color on red when the user writes on an invalid input field
+    }
+
+    .cancelBtnPadding {
+        @include ltr() { //Format for ltr platform direction
+            padding-right: 2px !important;
+            padding-left: 16px !important;
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            padding-left: 2px !important; 
+            padding-right: 16px !important;
+        } 
+        
+    }
+
+    .sendBtnPadding {
+        @include ltr() { //Format for ltr platform direction
+            padding-left: 2px !important;  
+        }
+    
+        @include rtl() { //Format for rtl platform direction
+            padding-right: 2px !important;             
+        }   
+    }
+
+    .sendBtn {
+        border-radius: 5px !important;
+    }
+    .cancelBtn {               
+        border-radius: 5px !important;
+    }
+
+}

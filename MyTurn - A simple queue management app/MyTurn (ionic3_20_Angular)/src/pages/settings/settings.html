@@ -1,0 +1,110 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{'Settings' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-grid no-padding>
+      <ion-row no-padding>
+  
+        <ion-col col-7 no padding>
+          <ion-list *ngIf="displayApp" padding-top>
+            <ion-list-header>
+              {{'Language' | translate}}
+            </ion-list-header>
+            <ion-item no-lines>
+              <ion-select [(ngModel)]="languages" (ionChange)="selectedLang(languages)" interface="popover" name="English">
+                <ion-option value="en">English</ion-option>
+                <ion-option value="ar">عربى</ion-option>
+                <ion-option value="tr">Türkçe</ion-option>
+                <ion-option value="gr">ελληνικά</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+  
+        <ion-col col-5 no padding>
+          <ion-list *ngIf="displayApp" padding-top>
+            <ion-list-header>
+              {{'Local Time' | translate}}
+            </ion-list-header>
+            <ion-item no-lines>
+              <ion-select class="timeZoneCSS" [(ngModel)]="timeZone" interface="popover" name="GMT+0" (ionChange)="setTimeZone(timeZone)">
+                <ion-option value='-12'>GMT-12</ion-option>
+                <ion-option value='-11'>GMT-11</ion-option>
+                <ion-option value='-10'>GMT-10</ion-option>
+                <ion-option value='-9'>GMT-9</ion-option>
+                <ion-option value='-8'>GMT-8</ion-option>
+                <ion-option value='-7'>GMT-7</ion-option>
+                <ion-option value='-6'>GMT-6</ion-option>
+                <ion-option value='-5'>GMT-5</ion-option>
+                <ion-option value='-4'>GMT-4</ion-option>
+                <ion-option value='-3'>GMT-3</ion-option>
+                <ion-option value='-2'>GMT-2</ion-option>
+                <ion-option value='-1'>GMT-1</ion-option>
+                <ion-option value='0'>GMT+0</ion-option>
+                <ion-option value='1'>GMT+1</ion-option>
+                <ion-option value='2'>GMT+2</ion-option>
+                <ion-option value='3'>GMT+3</ion-option>
+                <ion-option value='4'>GMT+4</ion-option>
+                <ion-option value='5'>GMT+5</ion-option>
+                <ion-option value='6'>GMT+6</ion-option>
+                <ion-option value='7'>GMT+7</ion-option>
+                <ion-option value='8'>GMT+8</ion-option>
+                <ion-option value='9'>GMT+9</ion-option>
+                <ion-option value='10'>GMT+10</ion-option>
+                <ion-option value='11'>GMT+11</ion-option>
+                <ion-option value='12'>GMT+12</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+  
+      </ion-row>
+    </ion-grid>
+  
+  
+    <ion-list *ngIf="displayApp" padding-top>
+      <ion-list-header>
+        {{'Notifications' | translate}}
+      </ion-list-header>
+      <ion-item no-lines>
+        <ion-toggle *ngIf="vibrateOn != null" [ngModel]="vibrateOn" (ngModelChange)="setVibrate()"></ion-toggle>
+        <ion-label>
+          {{'Vibrate' | translate}}
+        </ion-label>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-toggle *ngIf="soundOn != null" [ngModel]="soundOn" (ngModelChange)="setSound()"></ion-toggle>
+        <ion-label>
+          {{'Sound' | translate}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list *ngIf="displayApp" padding-top>
+      <ion-list-header>
+        {{'On-screen Tips' | translate}}
+      </ion-list-header>
+      <ion-buttons class="tipsBtns">
+        <button class="tipsBtn" ion-button text-center [style.backgroundColor]="disableColor" (click)="setTips(false)">{{'DISABLE' | translate}}</button>
+        <button class="tipsBtn" ion-button text-center [ngStyle]="{'background-color': enableColor}" (click)="setTips(true)">{{'ENABLE' | translate}}</button>
+      </ion-buttons>
+      
+    </ion-list>
+  
+  <ion-list *ngIf="displayApp" padding-top>
+    <ion-list-header>
+      {{'Frequently Asked Questions' | translate}}
+    </ion-list-header>
+    <ion-item no-lines>
+      <ion-label (click)="checkFAQ()">{{'Check FAQ' | translate}}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+  </ion-content>

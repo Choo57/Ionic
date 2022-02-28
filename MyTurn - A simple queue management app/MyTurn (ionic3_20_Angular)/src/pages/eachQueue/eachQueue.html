@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-buttons end>
+            <button ion-button icon-only (click)="onDeleteQueue()">
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title text-center>
+            {{ queue.name }}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+    <ion-item *ngIf="viewReady && (customerList.length == 0 || customerList.length == 'undefined')" color="white" text-center>
+        {{'ROOM_EMPTY' | translate}}
+    </ion-item>
+
+    <ion-item id="msgID" no-padding no-lines *ngIf="receivedMsg != '' && received && viewReady">
+        <ion-icon class="msgIcon" color="danger" name="chatbubbles" item-start>
+        </ion-icon>
+        <ion-label class="msgLabel" no-padding>
+            <p class="displayMsg" no-padding color="danger" [innerHTML]="receivedMsg">  
+            </p>
+            <p class="dateTime">
+                {{ dateLocal }}
+            </p>
+        </ion-label>
+    </ion-item>
+
+    <p ></p>
+
+    <ion-item *ngIf="(favIndex != -1) && (customerList[0] != undefined) && (favWaitTime == 1) && viewReady" id="waitItem">
+        {{ 'Wait_time_for' | translate: { 'customerName': customerList[favIndex].name } }} <span class="timeText"> {{ favWaitTime }} {{'minute' | translate}}</span>
+    </ion-item>
+    <ion-item *ngIf="(favIndex != -1) && (customerList[0] != undefined) && (favWaitTime != 1) && viewReady" id="waitItem">
+        {{ 'Wait_time_for' | translate: { 'customerName': customerList[favIndex].name } }} <span class="timeText"> {{ favWaitTime }} {{'minutes' | translate}}</span>
+    </ion-item>
+    <ion-item text-wrap *ngIf="(favIndex == -1) && (customerList[0] != undefined) && viewReady" id="waitItem">
+        {{"Select your name to get notified when it's your turn" | translate}}
+    </ion-item>
+
+    <ion-list *ngIf="viewReady && customerList.length > 0" no-padding>
+        <ion-list-header text-center text-capitalize [color]="startSelected ? 'secondary' : ''">
+            <h2>
+                {{ startText }}
+            </h2>
+        </ion-list-header>
+    </ion-list>
+
+    <ion-list no-padding *ngFor="let customer of customerList; let i = index" (click)="onClickCust(i)">
+        <ion-list-header *ngIf="viewReady" text-capitalize [color]="selectedCustomer[i]==1 ? 'secondary' : ''">
+            <h2>
+                <ion-icon *ngIf="i==favIndex" name="star" color="golden" item-left></ion-icon>
+                {{ customer.name }}
+                <span *ngIf="customer.waitTime == 0" class="endText">&lt;1 {{'min' | translate}}</span>
+                <span *ngIf="customer.waitTime > 0" class="endText">{{ customer.waitTime }} {{'min' | translate}}</span>
+            </h2>
+        </ion-list-header>
+    </ion-list>
+
+    <ion-list *ngIf="viewReady && customerList.length > 0" no-padding>
+        <ion-list-header text-center text-capitalize [color]="endSelected ? 'secondary' : ''">
+            <h2>
+                {{ endText }}
+            </h2>
+        </ion-list-header>
+    </ion-list>
+
+</ion-content>

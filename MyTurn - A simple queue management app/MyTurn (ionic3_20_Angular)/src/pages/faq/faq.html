@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{'FAQ' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+  <ion-list>
+    <button id="faqID" class="headingBtn" full detail-none no-lines ion-item color="primary">
+      <ion-icon name="apps" item-start></ion-icon>
+      <h2>{{'General' | translate}}</h2>
+    </button>
+    <button detail-none ion-item *ngFor="let faqgen of faqGeneral; let i = index" (click)="expandGeneral(i)">
+      <h3 text-wrap> {{ faqgen.heading }} </h3>
+      <expandable class="faqText" text-wrap [expandHeight]="itemExpandHeight" [expanded]="faqgen.expanded">
+        {{ faqgen.text }}
+      </expandable>
+    </button>
+
+    <button id="faqID" class="headingBtn" full detail-none no-lines ion-item color="primary">
+      <ion-icon name="clipboard" item-start></ion-icon>
+      <h2>{{'Queue Manager' | translate}}</h2>
+    </button>
+    <button detail-none ion-item *ngFor="let faqRoom of faqRooms; let i = index" (click)="expandRooms(i)">
+      <h3 text-wrap> {{ faqRoom.heading }} </h3>
+      <expandable class="faqText" text-wrap [expandHeight]="itemExpandHeight" [expanded]="faqRoom.expanded">
+        {{ faqRoom.text }}
+      </expandable>
+    </button>
+
+    <button id="faqID" class="headingBtn" full detail-none no-lines ion-item color="primary">
+      <ion-icon name="timer" item-start></ion-icon>
+      <h2>{{'My Wait' | translate}}</h2>
+    </button>
+    <button detail-none ion-item *ngFor="let faqQueue of faqQueues; let i = index" (click)="expandQueues(i)">
+      <h3 text-wrap> {{ faqQueue.heading }} </h3>
+      <expandable class="faqText" text-wrap [expandHeight]="itemExpandHeight" [expanded]="faqQueue.expanded">
+        {{ faqQueue.text }}
+      </expandable>
+    </button>
+  </ion-list>
+
+</ion-content>

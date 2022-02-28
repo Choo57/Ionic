@@ -1,0 +1,166 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onAddCustomer('new',null,null)">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center text-capitalize>{{ adminRoom.name }} </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div #queueTip class="tipInitial" *ngIf="showTip && ionViewLoaded">
+    <img *ngIf="direction == 'ltr'" class="arrow" src="../../assets/imgs/arrowR.png" height="42" width="42" />
+    <img *ngIf="direction == 'rtl'" class="arrow" src="../../assets/imgs/arrowL.png" height="42" width="42" />
+    {{ 'Empty_List_Msg' | translate: { 'icon': '&nbsp; \"+\" &nbsp;' } }}
+    <div>
+      <button class="btns" color="darkGrey" ion-button small outline (click)="secondTip()">{{'NEXT' | translate}}</button>
+    </div>
+  </div>
+
+  <div #secondTip class="tipInitial" *ngIf="showTip2 && ionViewLoaded"> 
+      {{'TIP_EACHROOM' | translate}}      
+    <div>
+      <button class="btns" color="darkGrey" ion-button small outline (click)="dontShow()">{{'DONOT SHOW' | translate}} </button>
+      <button class="btns" color="darkGrey" ion-button small outline (click)="endTip()">{{'OK' | translate}}</button>
+      <img *ngIf="direction == 'ltr'" class="arrow" src="../../assets/imgs/arrowD.png" height="42" width="42" />
+      <img *ngIf="direction == 'rtl'" class="arrow" src="../../assets/imgs/arrowDR.png" height="42" width="42" />
+    </div>
+  </div>
+
+  <ion-item id="msgID" no-padding no-lines *ngIf="receivedMsg != '' && received">
+    <ion-icon class="msgIcon" color="danger" name="chatbubbles" item-start>
+    </ion-icon>
+    <ion-label *ngIf="ionViewLoaded" class="msgLabel" no-padding>
+      <pre class="displayMsg" no-padding color="danger">
+          {{receivedMsg}}
+      </pre>
+      <p class="dateTime">
+        {{ dateLocal }}
+      </p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="totalWait > 1 &&  clients[0] != undefined && ionViewLoaded" id="waitItem">
+    {{'Total queue time:' | translate}}&nbsp;&nbsp;{{ totalWait }} {{'minutes' | translate}}
+  </ion-item>
+  <ion-item *ngIf="totalWait == 1 && clients[0] != undefined && ionViewLoaded" id="waitItem">
+    {{'Total queue time:' | translate}}&nbsp;&nbsp;1 {{'minute' | translate}}
+  </ion-item>
+  <ion-item *ngIf="totalWait == 0 && clients[0] != undefined && ionViewLoaded" id="waitItem">
+    {{'Total queue time:' | translate}}<span class="timeText"></span>
+  </ion-item>
+
+  <ion-grid *ngIf="ionViewLoaded" no-padding>
+    <ion-row no-padding>
+      <ion-col id="mainList" no-padding>
+
+        <ion-list *ngIf="clients.length > 0" no-padding no-lines>
+          <ion-item-sliding #slidingAnimationStart text-center>
+            <ion-item text-center [color]="startSelected ? 'secondary' : ''" (press)="onPressEdges(startText)" (tap)="onClickStart()">
+              <h3>
+                {{ startText }}
+              </h3>
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="primary" (click)="onPressEdges(startText)">
+                <ion-icon name="create"></ion-icon>
+                {{'EDIT' | translate}}
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+        <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+          <ion-item-sliding #slidingItem *ngFor="let client of clients; let i = index" (click)="onClickCustomer(client, i)">
+            <ion-item [color]="selectedRow[i] ? 'secondary' : ''">
+              <h3>
+                {{ client.name }}
+                <span *ngIf="newTime[i] == 0 && showWaitTime" class="endText">
+                  &nbsp;&nbsp;&rarr;&nbsp;&lt;1 {{'min' | translate}}?
+                </span>
+                <span *ngIf="newTime[i] > 0  && showWaitTime" class="endText">
+                  &nbsp;&nbsp;&rarr;&nbsp;{{ newTime[i] }} {{'min' | translate}}?
+                </span>
+                <span *ngIf="client.waitTime == 0  && showWaitTime" [ngClass]="{'endText': newTime[i] == null, 'strikethrough': (newTime[i] != null && autoMeasureTime)}">
+                  &lt;1 {{'min' | translate}}
+                </span>
+                <span *ngIf="client.waitTime > 0  && showWaitTime" [ngClass]="{'endText': newTime[i] == null, 'strikethrough': (newTime[i] != null && autoMeasureTime)}">
+                  {{ client.waitTime }} {{'min' | translate}}
+                </span>
+              </h3>
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="primary" (click)="onAddCustomer('edit',client, i, $event)">
+                <ion-icon name="create"></ion-icon>
+                {{'EDIT' | translate}}
+              </button>
+              <button ion-button color="danger" (click)="onDeleteCustomer(client, i, $event)">
+                <ion-icon name="trash"></ion-icon>
+                {{'DEL' | translate}}
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+        <ion-list *ngIf="clients.length > 0" no-padding no-lines>
+          <ion-item-sliding text-center>
+            <ion-item text-center [color]="endSelected ? 'secondary' : ''" (press)="onPressEdges(endText)" (tap)="onClickEnd()">
+              <h3>
+                {{ endText }}
+              </h3>
+            </ion-item>
+            <ion-item-options side="right">
+              <button ion-button color="primary" (click)="onPressEdges(endText)">
+                <ion-icon name="create"></ion-icon>
+                {{'EDIT' | translate}}
+              </button>
+            </ion-item-options>
+          </ion-item-sliding>
+        </ion-list>
+
+      </ion-col>
+      <ion-col no-padding col-1 *ngIf="autoMeasureTime">
+        <div id="accept-col">
+          <ion-item no-padding>
+            <ion-icon></ion-icon>
+          </ion-item>
+        </div>
+        <div id="accept-col" *ngFor="let client of clients; let i = index">
+          <ion-item no-padding>
+            <ion-icon *ngIf="newTime[i] != null && autoMeasureTime" color="secondary" name="checkmark-circle" (click)="onAcceptTime(i)"></ion-icon>
+          </ion-item>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-item *ngIf="ionViewLoaded" class="msgItem" no-lines>
+    <textarea #msgArea id="msgArea" [attr.rows]="rowNo" maxlength="130" [(ngModel)]="msg" placeholder="{{'Send a message to the room..' | translate}}"
+      (keyup)="msgKeyUp()"></textarea>
+    <div class="sent">
+      <ion-icon name="checkmark" color="secondary" *ngIf="sent">&nbsp;{{'Sent' | translate}}</ion-icon>
+    </div>
+    <div class="failed">
+      <ion-icon name="close" color="danger" *ngIf="failed">&nbsp;{{'Failed' | translate}}</ion-icon>
+    </div>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col class="clearBtnPadding" col-6>
+          <button class="clearBtn" ion-button color="primary" block outline padding (click)="onSendMsg('clearMsg')">{{'Clear'
+            | translate}}</button>
+        </ion-col>
+        <ion-col class="sendBtnPadding" padding col-6>
+          <button class="sendBtn" ion-button color="primary" block outline padding (click)="onSendMsg('sendMsg')">{{'Send'
+            | translate}}</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+
+</ion-content>

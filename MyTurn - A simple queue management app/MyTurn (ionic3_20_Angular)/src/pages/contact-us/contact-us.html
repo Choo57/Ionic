@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{'Contact Us' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+  <ion-label class="greeting" padding text-wrap text-justify text-start>
+    {{'ContactUs_greeting' | translate}}
+  </ion-label>
+
+  <form novalidate (ngSubmit)="onSubmitForm()" [formGroup]="contactUsForm">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="primary" floating>{{'Enter your name' | translate}}</ion-label>
+        <ion-input dir="{{direction}}" class="formInput" type="text" [(ngModel)]="userData.name" formControlName="name" [class.error1]="!contactUsForm.controls.name.valid && contactUsForm.controls.name.dirty"
+          required></ion-input>
+      </ion-item>
+      <div class="errorItem" text-start no-line *ngIf="( contactUsForm.get('name').hasError('minlength') || contactUsForm.get('name').hasError('maxlength') ||contactUsForm.get('name').hasError('pattern') ||contactUsForm.get('name').hasError('required') ) && contactUsForm.get('name').touched">
+        <div class="error" *ngIf="contactUsForm.get('name').hasError('required') && contactUsForm.get('name').touched">
+          {{'Please enter your name' | translate}}
+        </div>
+        <div class="error" *ngIf="contactUsForm.get('name').hasError('minlength') && contactUsForm.get('name').touched">
+          {{'Minimum 1 character' | translate}}
+        </div>
+        <div class="error" *ngIf="contactUsForm.get('name').hasError('maxlength') && contactUsForm.get('name').touched">
+          {{'Maximum 30 characters' | translate}}
+        </div>
+        <div class="error" *ngIf="contactUsForm.get('name').hasError('pattern') && contactUsForm.get('name').touched">
+          {{'INVALID_CHARS' | translate}}
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label color="primary" floating>{{'Enter your email' | translate}}</ion-label>
+        <ion-input autocapitalize="none" dir="{{direction}}" type="text" [(ngModel)]="userData.email" formControlName="email" [class.error1]="!contactUsForm.controls.email.valid && contactUsForm.controls.email.dirty"
+          required></ion-input>
+      </ion-item>
+      <div class="errorItem" text-start no-lines *ngIf="( contactUsForm.get('email').hasError('minlength') || contactUsForm.get('email').hasError('pattern') ||contactUsForm.get('email').hasError('required') ) && contactUsForm.get('email').touched">
+          <div class="error" *ngIf="contactUsForm.get('email').hasError('required') && contactUsForm.get('email').touched">
+            {{'Please enter your email' | translate}}
+          </div>
+          <div class="error" *ngIf="contactUsForm.get('email').hasError('pattern') && contactUsForm.get('email').touched">
+            {{'Email address is not valid' | translate}}
+          </div>
+      </div>
+
+      <ion-item>
+        <ion-label color="primary" floating>{{'Write your message' | translate}}</ion-label>
+        <ion-textarea dir="{{direction}}" id="msgArea" [attr.rows]="rowNo" maxlength="300" [(ngModel)]="userData.msg" formControlName="msg"></ion-textarea>
+      </ion-item>
+      <div class="errorItem" text-start no-lines *ngIf="( contactUsForm.get('msg').hasError('minlength') || contactUsForm.get('msg').hasError('maxlength') ||contactUsForm.get('msg').hasError('pattern') ||contactUsForm.get('msg').hasError('required') ) && contactUsForm.get('msg').touched">
+          <div class="error" *ngIf="contactUsForm.get('msg').hasError('required') && contactUsForm.get('msg').touched">
+            {{'Please write your message' | translate}}
+          </div>
+          <div class="error" *ngIf="contactUsForm.get('msg').hasError('minlength') && contactUsForm.get('msg').touched">
+            {{'Minimum 1 character' | translate}}
+          </div>
+          <div class="error" *ngIf="contactUsForm.get('msg').hasError('maxlength') && contactUsForm.get('msg').touched">
+            {{'Maximum 300 characters' | translate}}
+          </div>
+          <div class="error" *ngIf="contactUsForm.get('msg').hasError('pattern') && contactUsForm.get('msg').touched">
+            {{'INVALID_CHARS' | translate}}
+          </div>
+        </div>      
+
+    </ion-list>
+    <ion-grid no-padding>
+      <ion-row no-padding>
+        <ion-col class="cancelBtnPadding" col-6>
+          <button class="cancelBtn" ion-button color="primary" block padding type="button" (click)="onClose()">{{'Cancel' | translate}}</button>
+        </ion-col>
+        <ion-col class="sendBtnPadding" padding col-6>
+          <button class="sendBtn" ion-button color="primary" block padding type="submit" [disabled]="contactUsForm.invalid">{{'Send' | translate}}</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

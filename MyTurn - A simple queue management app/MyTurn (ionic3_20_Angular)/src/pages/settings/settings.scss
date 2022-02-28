@@ -1,0 +1,31 @@
+page-settings {
+    
+    .list-header{
+        margin: 0px !important;
+    }
+
+    .list {
+        margin-bottom: 0px !important;
+    }
+
+    .select {        
+        max-width: 90% !important;
+        @include ltr() { //Format for ltr platform direction
+            padding: 0 13px 0 0 !important; 
+        }    
+        @include rtl() { //Format for rtl platform direction
+            padding: 0 0 0 13px !important; 
+        }
+    }
+
+    .tipsBtns {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        margin: 0px !important;
+    }
+
+    // FOLLOWING VARIABLES CAN BE ADDED TO variables.scss to make the ion-select/ion-options popover menu width smaller BUT 
+    //    $popover-md-width:150px !default; //Default options-popover-content width is 250px. Overwritten to 150px so there isn't a lot of white space bwtween text and radio button
+    //    $popover-ios-width:150px !default; //Default options-popover-content width is 200px. Overwritten to 150px so there isn't a lot of white space bwtween text and radio button
+
+}

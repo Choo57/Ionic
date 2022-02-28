@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onAddQueue()">
+        <ion-icon name="add" *ngIf="hasInternet"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title text-center>
+      {{'My Wait' | translate}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div #queueTip class="tipInitial" *ngIf="showTip">
+    <img *ngIf="direction == 'ltr'" class="arrow" src="../../assets/imgs/arrowR.png" height="42" width="42" />
+    <img *ngIf="direction == 'rtl'" class="arrow" src="../../assets/imgs/arrowL.png" height="42" width="42" />
+    {{'TIP_EMPTY_QUEUES' | translate}}
+    <div>
+      <button class="btns" color="darkGrey" ion-button small outline (click)="dontShow()">{{'DONOT SHOW' | translate}}</button>
+      <button class="btns" color="darkGrey" ion-button small outline (click)="endTip()">{{'OK' | translate}}</button>
+    </div>
+  </div>
+
+  <ion-item *ngIf="!hasInternet" color="white">
+    {{'Please check your internet connection' | translate}}
+  </ion-item>
+
+  <ion-card text-wrap *ngFor="let q of queues; let i = index" (click)="onLoadQueue(queues, i)">
+    <ion-item *ngIf="hasInternet" color="white">
+      <ion-avatar item-start>
+        <img src="{{ qImages[i] }}">
+      </ion-avatar>
+      <h1> {{ q.name }} </h1>
+      <p *ngIf="q.totalCusts == 0">{{'Empty' | translate}}</p>
+      <p *ngIf="q.totalCusts == 1">1 {{'person' | translate}}</p>
+      <p *ngIf="q.totalCusts > 1">{{ q.totalCusts }} {{'people' | translate}}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>

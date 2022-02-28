@@ -1,0 +1,120 @@
+page-home {
+    .col {
+        margin-top: 10px !important;
+    }
+
+    .card{
+        //margin-top: 50px !important;
+        border-radius: 7px !important; 
+        //margin-right: 20px !important;
+        //margin-left: 20px !important;        
+        //min-height: 140px !important;
+        //width: 80% !important;
+        text-align: center !important; 
+        margin-bottom: 50px !important;
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19); 
+        z-index: -1 !important;      
+    }   
+    
+    .headerIcon {
+        font-size: 300% !important;
+        padding-bottom: 10px !important;
+        text-align: center !important;
+        z-index: -1 !important;  
+    }
+
+
+    //
+    // TIP ANIMATION
+    //
+    .arrow {
+        background: transparent !important;
+        background-color: transparent !important;        
+        @include ltr() { //Format for ltr platform direction
+            float: left !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: right !important;
+        }
+    } 
+
+    .btns {
+        position: relative !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+        z-index: 100 !important;
+        @include ltr() { //Format for ltr platform direction
+            float: left !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: right !important;
+        }  
+    }
+
+    .tipInitial{
+        opacity: 0 !important;
+        margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;
+        color: color($colors, darkGrey) !important; 
+        font-style: italic !important;
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 100% !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important; 
+        text-align: justify !important;
+        text-justify: inter-word !important;     
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;  
+        font-style: italic !important;
+    }
+
+    .tipVisible{
+        opacity: 1 !important;
+        margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;
+        color: color($colors, darkGrey) !important; 
+        font-style: italic !important;
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 100% !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+        text-align: justify !important;
+        text-justify: inter-word !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;  
+        font-style: italic !important;
+    }
+
+    .TipIn {
+        -webkit-animation: fadeInAnim;
+        animation: fadeInAnim;
+        -webkit-animation-duration: 800ms;
+        animation-duration: 800ms;  
+    }
+
+    @-webkit-keyframes fadeInAnim {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }    
+
+    .TipOut {
+        -webkit-animation: fadeOutAnim;
+        animation: fadeOutAnim;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;  
+    }
+
+    @-webkit-keyframes fadeOutAnim {
+        from { opacity: 1; }
+        to   { opacity: 0; }
+    }
+
+
+}

@@ -1,0 +1,118 @@
+page-eachQueue {
+
+    #msgID {
+        .item-inner {
+            margin: 0px !important;
+        }
+        
+
+        .msgLabel {
+            margin: 0 0 6px 0 !important;        
+        }
+    
+        
+        .displayMsg {
+            margin: 0px !important;
+            color: color($colors, danger) !important;
+          //  display: table !important; //Added this so the child <span> elements can be vertically aligned by using display: table-cell and vertical-align: middle
+            white-space: pre-line !important; //Enables \n to be rendered as a newline inside the ion-label
+            width: 100% !important;
+            padding-bottom: 4px !important;
+        }
+    
+        .msgIcon {
+           // display:table-cell !important;
+           // vertical-align: super !important;
+            @include ltr() { //Format for ltr platform direction
+                padding-right: 4px !important; 
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                padding-left: 4px !important; 
+            }
+        }
+    
+        .dateTime {
+            font-size: 60% !important;        
+            color: color($colors, danger) !important;
+            //display:table-cell !important;
+            //vertical-align: bottom !important; 
+            @include ltr() { //Format for ltr platform direction
+                text-align: left !important;
+            }
+        
+            @include rtl() { //Format for rtl platform direction
+                text-align: right !important; 
+            }
+        }
+
+    }
+
+
+    ion-icon {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }   
+    
+    ion-list {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-bottom: 1px !important;
+        margin-bottom: 5px !important;
+    }
+
+    ion-list-header {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+        border-radius: 10px !important; 
+        border-top: 1px solid #dedede !important;
+        border-bottom: 1px solid #dedede !important;
+        border-left: 1px solid #dedede !important;    
+        border-right: 1px solid #dedede !important;
+        }
+
+    .endText {
+        @include ltr() { //Format for ltr platform direction
+            text-align: right !important;
+            float: right !important;
+        }
+        @include rtl() { //Format for ltr platform direction
+            text-align: left !important;
+            float: left !important;
+        } 
+        text-transform: lowercase !important;
+        padding-top: 1px !important;
+        margin-bottom: 2px !important;
+        font-size: 75% !important;
+    }
+
+    #waitItem {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        padding-bottom: 2px !important;
+        margin-bottom: 1px;    
+        font-size: 95% !important;  
+        font-weight: normal !important;       
+        .item-inner {
+            border: none !important;
+            height: 32px !important;
+        }
+        .timeText {
+            @include ltr() { //Format for ltr platform direction
+                text-align: right !important;
+                float: right !important;
+            }
+            @include rtl() { //Format for ltr platform direction
+                text-align: left !important;
+                float: left !important;
+            }            
+        }
+        .label {
+            margin: 0px 0px 0px 0px !important;
+        }
+        .input-wrapper {
+            height: 32px !important;
+        }
+    }   
+
+}

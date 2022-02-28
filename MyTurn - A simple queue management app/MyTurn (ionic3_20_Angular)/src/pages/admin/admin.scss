@@ -1,0 +1,119 @@
+page-admin {
+    ion-card h1 {
+        padding-top: 10px;
+    }
+
+    ion-card {
+        margin: 20px !important;;
+        width: calc(100% - 40px) !important;; 
+    }
+
+    ion-avatar img {
+        width: 55px !important;
+        height: 55px !important;
+    }
+
+    //
+    // TIP ANIMATION
+    //
+    .arrow {
+        background: transparent !important;
+        background-color: transparent !important;        
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-right: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-left: 20px !important;
+        }
+    }
+
+    .btns {
+        position: relative !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+        z-index: 100 !important;
+        @include ltr() { //Format for ltr platform direction
+            float: left !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: right !important;
+        }  
+    }
+
+    .tipInitial{
+        opacity: 0 !important;
+        //margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;     
+        color: color($colors, darkGrey) !important;   
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 75% !important;
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-left: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-right: 20px !important;
+        }  
+        text-align: justify !important;
+        text-justify: inter-word !important;     
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;  
+        font-style: italic !important;
+    }
+
+    .tipVisible{
+        opacity: 1 !important;
+        //margin-top: -40px !important;
+        background: transparent !important;
+        //background: white !important;
+        //border-radius: 5px !important;
+        position: relative !important;
+        color: color($colors, darkGrey) !important; 
+        left: 0px !important;
+        top: 0px !important;
+        z-index: 99 !important;
+        width: 75% !important;
+        @include ltr() { //Format for ltr platform direction
+            float: right !important;
+            margin-left: 20px !important;
+        }    
+        @include rtl() { //Format for rtl platform direction
+            float: left !important;
+            margin-right: 20px !important;
+        }  
+        text-align: justify !important;
+        text-justify: inter-word !important;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;  
+        font-style: italic !important;
+    }
+
+    .TipIn {
+        -webkit-animation: fadeInAnim;
+        animation: fadeInAnim;
+        -webkit-animation-duration: 800ms;
+        animation-duration: 800ms;  
+    }
+
+    @-webkit-keyframes fadeInAnim {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }    
+
+    .TipOut {
+        -webkit-animation: fadeOutAnim;
+        animation: fadeOutAnim;
+        -webkit-animation-duration: 200ms;
+        animation-duration: 200ms;  
+    }
+
+    @-webkit-keyframes fadeOutAnim {
+        from { opacity: 1; }
+        to   { opacity: 0; }
+    }
+}

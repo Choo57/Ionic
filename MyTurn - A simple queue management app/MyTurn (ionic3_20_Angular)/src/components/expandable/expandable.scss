@@ -1,0 +1,12 @@
+expandable {
+    .expand-wrapper {
+        transition: 0.2s linear;
+        font-size: 0.8em !important;        
+        //padding: 0px 5px 0px 5px !important;
+        margin-top: 10px !important;
+    }  
+ 
+    .collapsed {
+        height: 0 !important;
+    }
+}

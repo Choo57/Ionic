@@ -1,0 +1,30 @@
+page-faq {
+
+    .icon {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .headingBtn {
+        height: 0px !important;
+    }
+
+    #faqID {
+       .item-inner {
+           margin-left: 2px !important;
+       }
+    }
+
+    .faqText {
+        color: color($colors, primary) !important;
+
+    }
+
+    .ios, .md { 
+        page-home {     
+            button {
+                align-items: baseline;
+            }     
+        }     
+    }
+}

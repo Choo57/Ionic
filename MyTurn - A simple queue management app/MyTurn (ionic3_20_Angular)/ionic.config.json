@@ -1,0 +1,7 @@
+{
+  "name": "MyTurn",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

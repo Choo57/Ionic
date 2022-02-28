@@ -1,0 +1,14 @@
+page-add-queue {
+    .formInput {
+        @include ltr() { //Format for ltr platform direction
+            text-align: left !important;
+            float: left !important;
+            direction: ltr !important;
+        }
+        @include rtl() { //Format for ltr platform direction
+            text-align: right !important;
+            float: right !important;
+            direction: rtl !important;
+        } 
+    }
+}

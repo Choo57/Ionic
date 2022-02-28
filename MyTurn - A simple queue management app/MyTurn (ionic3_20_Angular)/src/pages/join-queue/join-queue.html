@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>{{'Join Room' | translate}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding text-center>
+  <form #f="ngForm" (ngSubmit)="onSubmitQueue(f)">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>{{'Enter room name' | translate}}</ion-label>
+        <ion-input dir="{{direction}}" class="formInput" maxlength="32" type="text" name="queueName" ngModel required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{'Enter room passcode' | translate}}</ion-label>
+        <ion-input dir="{{direction}}" maxlength="32" type="text" name="queuePasscode" ngModel required></ion-input>
+      </ion-item>
+      <ion-input name="blankInputToHideLastLongLine" hidden></ion-input>
+    </ion-list>    
+    <button ion-button type="button" (click)="onClose()">{{'Cancel' | translate}}</button>
+    <button ion-button type="submit" [disabled]="!f.valid">{{'Submit' | translate}}</button>    
+  </form>
+</ion-content>
